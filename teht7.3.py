@@ -1,5 +1,5 @@
-Airports = {"EFNU": "Nummelan lentokenttä", "EFHK": "Helsinki/Vantaan lentokenttä",
-            "EFHN": "Hankoon lentokenttä", "EFKO": "Kalajoen lentokenttä"}
+Airports = {"EFNU": "Nummelan Lentokenttä", "EFHK": "Helsinki/Vantaan Lentokenttä",
+            "EFHN": "Hankoon Lentokenttä", "EFKO": "Kalajoen Lentokenttä"}
 
 Program_Running = True
 while Program_Running:
@@ -12,12 +12,21 @@ Kirjoita \"lopeta\" jos haluat lopettaa ohjelman käytön.
         if Airport in Airports:
             print(f"Lentokentän {Airport} ICAO koodia vastaava lentokenttä on: {Airports[Airport]}\n")
         else:
-            print(f"Lentokenttää ei löytynyt")
+            print(f"Lentokenttää ei löytynyt\n")
     elif Input == "uusi":
-        Airport = input("Syötä lentokentän ICAO koodi\n").upper()
-        AirportName = input("Syötä lentokentän nimi\n").title()
-        if Airport in Airports or AirportName in Airports:
-            print("ICAO-koodi tai lentokenttä löytyy jo hakemistosta\n")
+        vaihe = 0
+        while vaihe == 0:
+            Airport = input("Syötä lentokentän ICAO koodi\n").upper()
+            if Airport in Airports:
+                print("Lentokentän ICAO on jo rekisteröity\n")
+            else:
+                vaihe += 1
+        while vaihe == 1:
+            AirportName = input("Syötä lentokentän nimi\n").title()
+            if AirportName in Airports.values():
+                print("Lentokenttä on jo rekisteröity\n")
+            else:
+                vaihe += 1
         else:
             Airports[Airport] = AirportName
     elif Input == "lopeta":
