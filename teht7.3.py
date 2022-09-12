@@ -17,7 +17,7 @@ Kirjoita \"lopeta\" jos haluat lopettaa ohjelman käytön.
         vaihe = 0
         while vaihe == 0:
             Airport = input("Syötä lentokentän ICAO koodi\n").upper()
-            if Airport in Airports.keys():
+            if Airport in Airports:
                 print("Lentokentän ICAO on jo rekisteröity\n")
             else:
                 vaihe += 1
