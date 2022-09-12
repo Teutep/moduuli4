@@ -9,6 +9,16 @@ yhteys = mysql.connector.connect(
 )
 
 #määritelty kysely
-maakoodi = input("Anna 2-kirjaiminen maakoodi")
+maakoodi = input("Anna 2-kirjaiminen maakoodi:\n"
+"> ")
 sql = "SELECT name, continent FROM country WHERE iso_country = '" + maakoodi + "'"
 print(sql)
+
+#suositetaan kysely
+kursori = yhteys.cursor()
+kursori.execute(sql)
+
+#haetaan ja käsitellään tulosrivit
+tulos = kursori.fetchall()
+for rivi in tulos:
+    print(f"{rivi[0]}, {rivi[1]}")
